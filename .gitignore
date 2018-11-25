@@ -1,0 +1,28 @@
+############
+# NPM files
+############
+**/node_modules
+node_modules
+npm-debug.log
+
+############
+# Temp files
+############
+temp
+tmp
+.tmp
+*.log
+*.diff
+*.patch
+
+############
+# Editor &  OS files
+############
+.idea
+.DS_STORE
+.Trashes
+.project
+.*proj
+Thumbs.db
+
+
