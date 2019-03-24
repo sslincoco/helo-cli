@@ -1,0 +1,20 @@
+#!/usr/bin/env node
+
+process.title = 'helo';
+
+require('commander')
+  .version(require('../package.json').version)
+  .description('react组件工具')
+  .usage('<command> [options]')
+  .command('init [projectName]', '初始化组件(short-cut alias: "i")').alias('i')
+  .command('server', '启动组件开发服务')
+  .parse(process.argv)
+
+
+  /**
+   * 这个文件可以看做是入口文件
+   * 第一行代码是必须的，脚本用env启动，
+   * 是因为脚本解释器在Linux中可能被安装于不同的目录，env可以在系统的PATH目录中寻找
+   * 同时，env还规定一些系统环境变量
+   * 这种写法主要是为了让你的程序在不同的系统上都能适用
+   */

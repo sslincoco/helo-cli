@@ -1,0 +1,57 @@
+#!/usr/bin/env node
+/** 
+ * /usr/bin/env node
+*/
+const program = require('commander');
+const fs = require('fs');
+const path = require('path');
+const inquirer = require('inquirer');
+const rimraf = require('rimraf');
+const chalk = require('chalk');
+
+const init = require('../lib/init');
+
+/**
+ * Usage
+ */
+
+program.usage(['projectName'])
+.on('--help', () => {
+  console.log(' Example:');
+  console.log();
+  console.log(chalk.green('    $helo init projectName'));
+  console.log(chalk.gray('  上面的命令是生成一个名称为projectName的项目'));
+  console.log();
+})
+.parse(process.argv)
+const args = program.args;
+if(!args.length) {
+  console.log(chalk.red('  请输入项目名称'));
+  process.exit(1);
+}
+
+const projectName = args[0];
+fs.exists(projectName, exists => {
+  if(exists) {
+    const existPrompt = [{
+      type: 'confirm',
+      name: 'isContinue',
+      message: '已经存在该目录，确定继续，并删除原目录？',
+      default: true
+    }];
+    inquirer.prompt(existPrompt).then(result => {
+      if(!result.isContinue) {
+        console.log(result)
+        process.exit(1);
+      } else {
+        console.log(result)
+        rimraf.sync(path.resolve(__dirname, '../', projectName));
+        // 初始化
+        init(projectName)
+      }
+    })
+  } else {
+    // 初始化
+    init(projectName)
+  }
+})
