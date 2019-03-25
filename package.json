@@ -1,12 +1,11 @@
 {
-  "name": "helo",
+  "name": "blaz",
   "version": "0.0.1",
   "description": "cli工具",
   "main": "index.js",
   "bin": {
-    "helo": "bin/helo",
-    "helo-init": "bin/helo-init",
-    "helo-server": "bin/helo-server"
+    "blaz": "bin/blaz",
+    "blaz-init": "bin/blaz-init",
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -16,7 +15,7 @@
     "url": "git+https://github.com/sslincoco/helo-cli.git"
   },
   "keywords": [
-    "helo-cli"
+    "blaz-cli"
   ],
   "author": "cocolin",
   "license": "ISC",
